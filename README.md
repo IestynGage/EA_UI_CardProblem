@@ -1,5 +1,4 @@
-# EA_UI_CardProblem
-Evolutionary algorithm with User Interface for the card problem.
+# Whats purpose of this project?
 
 This purpose of this project is to create a Evolutionary algoirthm for the 'Card Problem'.
 Unlike my previous project with Evolutionary algorithm this will be linked to JavaFX to display
