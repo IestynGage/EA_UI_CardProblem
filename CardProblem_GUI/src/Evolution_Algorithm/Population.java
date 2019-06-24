@@ -1,22 +1,37 @@
 package Evolution_Algorithm;
 
-
-import javafx.fxml.Initializable;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Population {
+
+    ///////////////////////
+    //  Variables
+    ///////////////////////
+
     private Double populationSize;
     private Double reSelection;
     private int generation = 0;
+
+    ///////////////////////
+    //  ArrayLists
+    ///////////////////////
+
     private ArrayList<Chromosome> population = new ArrayList<Chromosome>();
+
+    ///////////////////////
+    //  Constructors
+    ///////////////////////
 
     public Population(Double thePopulationSize, Double theReSelection){
         populationSize = thePopulationSize;
         reSelection = theReSelection;
         initializePopulation();
     }
+
+    ///////////////////////
+    //  Methods
+    ///////////////////////
 
     public Boolean hasConverged(){
         if(getBestScore()==0 || generation == 500){

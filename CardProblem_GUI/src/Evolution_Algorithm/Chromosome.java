@@ -3,8 +3,22 @@ package Evolution_Algorithm;
 import java.util.Random;
 
 public class Chromosome {
+
+    ///////////////////////
+    //  Constants
+    ///////////////////////
+
     final static private int SOLUTION_SIZE = 10;
+
+    ///////////////////////
+    //  Array
+    ///////////////////////
+
     private PileType[] solution = new PileType[SOLUTION_SIZE];
+
+    ///////////////////////
+    //  Constructors
+    ///////////////////////
 
     public Chromosome(Chromosome parent1,Chromosome parent2){
         setHelixPart(0,2,parent1.getSolution());
@@ -27,6 +41,10 @@ public class Chromosome {
             }
         }
     }
+
+    ///////////////////////
+    //  Methods
+    ///////////////////////
 
     private void setHelixPart(int startPositiion, int endPosition, PileType[] parent){
         for(int arrayPosition = startPositiion; arrayPosition<=endPosition; arrayPosition++){
@@ -62,10 +80,17 @@ public class Chromosome {
         return output;
     }
 
+    /**
+     * This gets the solution of the chromosome
+     * @return solution
+     */
     public PileType[] getSolution(){
         return solution;
     }
 
+    /**
+     * Random amount of array are swapped at random array positions
+     */
     public void mutate(){
         Random random = new Random();
 
@@ -82,10 +107,18 @@ public class Chromosome {
 
     }
 
+    /**
+     *  This sets the solution for the chromosome
+     * @param theSolution
+     */
     public void setSolution(PileType[] theSolution){
         solution = theSolution;
     }
 
+    /**
+     * This calculates the score from the chromosome.
+     * @return the Score of chromosome
+     */
     public int fitnessFunction(){
         int output;
         int multiplicationPile = (360 - getMultiplication())/10;
@@ -101,6 +134,11 @@ public class Chromosome {
         return output;
     }
 
+    /**
+     * This returns all information in the chromosome
+     *
+     * @return String of all the information in the Chromosome
+     */
     public String toString(){
         StringBuilder  stringBuilder = new StringBuilder("-- Chromosome Date -- \n");
         for (PileType pileType : solution) {
