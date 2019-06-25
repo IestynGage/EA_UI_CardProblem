@@ -5,6 +5,8 @@ Unlike my previous project with Evolutionary algorithm this will be linked to Ja
 information graphically. It will also allow the user to set the starting parameters for the 
 Evolutionary algorithm.
 
+![alt text](https://github.com/IestynGage/EA_UI_CardProblem/blob/master/example.png)
+
 # What is Card Problem?
 
 The card problem is where there are ten cards labelled 1-10, all the cards must be sorted 
