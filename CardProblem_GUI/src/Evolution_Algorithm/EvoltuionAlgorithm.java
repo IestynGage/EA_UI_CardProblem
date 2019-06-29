@@ -12,6 +12,11 @@ public class EvoltuionAlgorithm {
         thePopulation = new Population(thePopulationSize,theReSelection);
     }
 
+    /**
+    *runs EvoltuionAlgorithm several times intill a solution with score of zero has been achieved. After each generation the
+    *algorithm gets score of average and the best, and adds it to the result.
+    *@return result
+    */
     public ArrayList<XYChart.Series> getLinceChart(){
         XYChart.Series<String,Number> bestSeries = new XYChart.Series<>();
         XYChart.Series<String,Number> averageSeries = new XYChart.Series<>();
