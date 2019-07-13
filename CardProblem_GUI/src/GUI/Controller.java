@@ -9,7 +9,6 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -34,6 +33,12 @@ public class Controller implements Initializable {
 
     EvoltuionAlgorithm evoltuionAlgorithm;
 
+    /**
+    * This Function runs the Genetic Algorithm when called upon, it collects
+    * the data and then adds it to the graph
+    *
+    *@parameters actionEvent
+    */
     public void startAlgorithm(ActionEvent actionEvent){
         Double startingPopulation = Double.parseDouble(lblPopulation.getText());
         Double startingReselection = Double.parseDouble(lblReselection.getText());
@@ -46,7 +51,10 @@ public class Controller implements Initializable {
         }
     }
 
-    @Override
+    /**
+    *This function is used to create the sliders in the GUI.
+    */
+   @Override
     public void initialize(URL location, ResourceBundle resources) {
         sldPopulation.setValue(INIT_POPULATION);
         lblPopulation.setText(Integer.toString(INIT_POPULATION));
