@@ -36,8 +36,8 @@
             <Label layoutX="14.0" layoutY="77.0" prefHeight="14.0" prefWidth="82.0" text="Reselection" />
             <Label fx:id="lblReselection" layoutX="112.0" layoutY="77.0" text="Label" />
             <Slider fx:id="sldReselection" layoutX="10.0" layoutY="103.0" />
-            <CheckBox layoutX="19.0" layoutY="132.0" mnemonicParsing="false" text="View Best Result" />
-            <CheckBox layoutX="19.0" layoutY="159.0" mnemonicParsing="false" text="View Average Result" />
+            <CheckBox fx:id="cbBest" layoutX="19.0" layoutY="132.0" mnemonicParsing="false" text="View Best Result" />
+            <CheckBox fx:id="cbAverage" layoutX="19.0" layoutY="159.0" mnemonicParsing="false" text="View Average Result" />
          </children></AnchorPane>
   </items>
 </SplitPane>

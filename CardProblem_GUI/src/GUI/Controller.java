@@ -1,12 +1,12 @@
 package GUI;
 
 import Evolution_Algorithm.EvoltuionAlgorithm;
-import Evolution_Algorithm.Population;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import java.net.URL;
@@ -16,33 +16,48 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    ///////////////////////
+    //  FXML
+    ///////////////////////
     @FXML
     Slider sldPopulation;
-    private static int INIT_POPULATION = 30;
     @FXML
     Label lblPopulation;
-
     @FXML
     Slider sldReselection;
-    private static int INIT_RESELECTION = 30;
     @FXML
     Label lblReselection;
-
     @FXML
     LineChart<Number,Number> lineChart;
+    @FXML
+    private CheckBox cbBest;
+    @FXML
+    private CheckBox cbAverage;
+    ///////////////////////
+    //  Constants
+    ///////////////////////
+    private static int INIT_RESELECTION = 30;
+    private static int INIT_POPULATION = 30;
 
-    EvoltuionAlgorithm evoltuionAlgorithm;
+    ///////////////////////
+    //  Objects
+    ///////////////////////
+
+    private EvoltuionAlgorithm evoltuionAlgorithm;
+
+    ///////////////////////
+    //  Methods
+    ///////////////////////
 
     /**
-    * This Function runs the Genetic Algorithm when called upon, it collects
-    * the data and then adds it to the graph
-    *
-    *@parameters actionEvent
-    */
+     * this gets the data from the sliders and uses it for input for EvolutionaryAlgorithm parameters
+     *
+     * @param actionEvent
+     */
     public void startAlgorithm(ActionEvent actionEvent){
         Double startingPopulation = Double.parseDouble(lblPopulation.getText());
         Double startingReselection = Double.parseDouble(lblReselection.getText());
-        evoltuionAlgorithm = new EvoltuionAlgorithm(startingPopulation,startingReselection);
+        evoltuionAlgorithm = new EvoltuionAlgorithm(startingPopulation,startingReselection,cbAverage.isSelected(),cbBest.isSelected());
 
         ArrayList<XYChart.Series> result = evoltuionAlgorithm.getLinceChart();
         lineChart.getData().clear();
@@ -52,9 +67,12 @@ public class Controller implements Initializable {
     }
 
     /**
-    *This function is used to create the sliders in the GUI.
-    */
-   @Override
+     * This is used to set up Bi-direction for the Sliders with Init_Population
+     * (This sets the slider so that it changes the text)
+     * @param location
+     * @param resources
+     */
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         sldPopulation.setValue(INIT_POPULATION);
         lblPopulation.setText(Integer.toString(INIT_POPULATION));
