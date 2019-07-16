@@ -1,12 +1,15 @@
 package GUI;
 
 import Evolution_Algorithm.EvoltuionAlgorithm;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import java.net.URL;
@@ -33,6 +36,9 @@ public class Controller implements Initializable {
     private CheckBox cbBest;
     @FXML
     private CheckBox cbAverage;
+    @FXML
+    public ComboBox<String> comboBox;
+
     ///////////////////////
     //  Constants
     ///////////////////////
@@ -44,7 +50,10 @@ public class Controller implements Initializable {
     ///////////////////////
 
     private EvoltuionAlgorithm evoltuionAlgorithm;
-
+    ///////////////////////
+    //  ArrayList
+    ///////////////////////
+    ObservableList<String> list = FXCollections.observableArrayList("Equal","Pure");
     ///////////////////////
     //  Methods
     ///////////////////////
@@ -57,7 +66,7 @@ public class Controller implements Initializable {
     public void startAlgorithm(ActionEvent actionEvent){
         Double startingPopulation = Double.parseDouble(lblPopulation.getText());
         Double startingReselection = Double.parseDouble(lblReselection.getText());
-        evoltuionAlgorithm = new EvoltuionAlgorithm(startingPopulation,startingReselection,cbAverage.isSelected(),cbBest.isSelected());
+        evoltuionAlgorithm = new EvoltuionAlgorithm(startingPopulation,startingReselection,cbAverage.isSelected(),cbBest.isSelected(),comboBox.getValue());
 
         ArrayList<XYChart.Series> result = evoltuionAlgorithm.getLinceChart();
         lineChart.getData().clear();
@@ -81,6 +90,7 @@ public class Controller implements Initializable {
         sldReselection.setValue(INIT_RESELECTION);
         lblReselection.setText(Integer.toString(INIT_RESELECTION));
         lblReselection.textProperty().bindBidirectional(sldReselection.valueProperty(), NumberFormat.getNumberInstance());
+        comboBox.setItems(list);
     }
 
 

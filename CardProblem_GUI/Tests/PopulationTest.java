@@ -5,7 +5,7 @@ public class PopulationTest {
 
     @Test
     public void constructor(){
-        Population thePopulation = new Population(new Double(30),new Double(50));
+        Population thePopulation = new Population(new Double(30),new Double(50),"Equal");
         System.out.println(thePopulation.toString());
         thePopulation.nextGeneration();
         thePopulation.nextGeneration();

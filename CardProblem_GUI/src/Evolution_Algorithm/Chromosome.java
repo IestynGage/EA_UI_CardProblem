@@ -119,7 +119,7 @@ public class Chromosome {
      * This calculates the score from the chromosome.
      * @return the Score of chromosome
      */
-    public int fitnessFunction(){
+    public int fitnessFunctionEqual(){
         int output;
         int multiplicationPile = (360 - getMultiplication())/10;
         if (multiplicationPile<0){
@@ -134,6 +134,10 @@ public class Chromosome {
         return output;
     }
 
+    public int fitnessFunctionPure(){
+        int output = 396 - (getMultiplication()) + getAddition();
+        return output;
+    }
     /**
      * This returns all information in the chromosome
      *

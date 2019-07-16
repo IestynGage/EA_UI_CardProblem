@@ -1,8 +1,7 @@
 package Evolution_Algorithm;
 
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
 
+import javafx.scene.chart.XYChart;
 import java.util.ArrayList;
 
 public class EvoltuionAlgorithm {
@@ -31,8 +30,8 @@ public class EvoltuionAlgorithm {
      * @param getAverage
      * @param getBest
      */
-    public EvoltuionAlgorithm(Double thePopulationSize, Double theReSelection,boolean getAverage, boolean getBest){
-        thePopulation = new Population(thePopulationSize,theReSelection);
+    public EvoltuionAlgorithm(Double thePopulationSize, Double theReSelection,boolean getAverage, boolean getBest, String fitnessFunction){
+        thePopulation = new Population(thePopulationSize,theReSelection,fitnessFunction);
         this.getAverage = getAverage;
         this.getBest = getBest;
     }

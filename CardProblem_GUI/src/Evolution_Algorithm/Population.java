@@ -9,6 +9,8 @@ public class Population {
     //  Variables
     ///////////////////////
 
+
+    private String fitnessFunction;
     private Double populationSize;
     private Double reSelection;
     private int generation = 0;
@@ -23,9 +25,10 @@ public class Population {
     //  Constructors
     ///////////////////////
 
-    public Population(Double thePopulationSize, Double theReSelection){
+    public Population(Double thePopulationSize, Double theReSelection,String theFitnessFunction){
         populationSize = thePopulationSize;
         reSelection = theReSelection;
+        fitnessFunction = theFitnessFunction;
         initializePopulation();
     }
 
@@ -34,7 +37,7 @@ public class Population {
     ///////////////////////
 
     public Boolean hasConverged(){
-        if(getBestScore()==0 || generation == 500){
+        if(getBestScore()==0 || generation >= 5000){
             return true;
         } else{
             return false;
@@ -44,7 +47,7 @@ public class Population {
     public int getAverageScore(){
         int averageScore = 0;
         for (Chromosome chromosome : population) {
-            averageScore += chromosome.fitnessFunction();
+            averageScore += chromosome.fitnessFunctionEqual();
         }
         averageScore = averageScore / population.size();
 
@@ -53,20 +56,29 @@ public class Population {
 
     public int getBestScore(){
         Chromosome bestChromosome = getBestChromosome();
-        int bestScore = bestChromosome.fitnessFunction();
+        int bestScore = bestChromosome.fitnessFunctionEqual();
         return bestScore;
     }
 
     public Chromosome getBestChromosome(){
         Chromosome bestSolution = null;
-        for (Chromosome possibleBest : population) {
-            if(bestSolution==null || possibleBest.fitnessFunction() < bestSolution.fitnessFunction()){
-                bestSolution = possibleBest;
+        if(fitnessFunction=="Equal"){
+            for (Chromosome possibleBest : population) {
+                if(bestSolution==null || possibleBest.fitnessFunctionEqual() < bestSolution.fitnessFunctionEqual()){
+                    bestSolution = possibleBest;
+                }
             }
-        }
+        } else if(fitnessFunction=="Pure") {
+            for (Chromosome possibleBest : population) {
+                if (bestSolution == null || possibleBest.fitnessFunctionPure() < bestSolution.fitnessFunctionPure()) {
+                    bestSolution = possibleBest;
+                }
+            }
 
+        }
         return bestSolution;
     }
+
 
     public int getGeneration(){
         return generation;
